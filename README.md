@@ -64,7 +64,8 @@ Write a function called `street_distance` that calculates how far **in streets**
 
 ```python
 def street_distance(first_neighbor, second_neighbor):
-    pass
+        return first_neighbor['street'] - second_neighbor['street']
+
 ```
 
 Now execute the code below. As you can see from the comment to the right, the expected returned street distance is $4$.
@@ -79,7 +80,7 @@ Write a function called `avenue_distance` that calculates how far in avenues two
 
 ```python
 def avenue_distance(first_neighbor, second_neighbor):
-    pass
+    return abs(first_neighbor['avenue'] - second_neighbor['avenue'])
 ```
 
 
@@ -94,7 +95,8 @@ Now let's begin writing functions involved with calculating that hypotenuse of o
 
 ```python
 def distance_between_neighbors_squared(first_neighbor, second_neighbor):
-    pass
+    return street_distance(first_neighbor, second_neighbor)**2 + avenue_distance(first_neighbor, second_neighbor)**2
+
 ```
 
 
@@ -110,7 +112,7 @@ Now let's move onto the next step and write a function called `distance`, that g
 ```python
 import math
 def distance(first_neighbor, second_neighbor):
-    pass
+    return math.sqrt(distance_between_neighbors_squared(first_neighbor, second_neighbor))
 ```
 
 
@@ -144,7 +146,10 @@ So let's accomplish this by writing a function called `distance_with_neighbor` t
 ```python
 import math
 def distance_with_neighbor(first_neighbor, second_neighbor):
-    pass
+    neighbor_with_distance = second_neighbor.copy()
+    distance = math.sqrt(distance_between_neighbors_squared(first_neighbor, second_neighbor))
+    neighbor_with_distance['distance'] = distance
+    return neighbor_with_distance
 ```
 
 
@@ -158,7 +163,9 @@ Now write a function called `distance_all` that returns a list representing the 
 
 ```python
 def distance_all(first_neighbor, neighbors):
-    pass
+    remaining_neighbors = list(filter(lambda neighbor: neighbor != first_neighbor, neighbors))
+    return list(map(lambda neighbor: distance_with_neighbor(first_neighbor, neighbor), remaining_neighbors))
+
 ```
 
 
@@ -177,7 +184,10 @@ Finally, write a function called `nearest_neighbors` that given a neighbor, retu
 
 ```python
 def nearest_neighbors(first_neighbor, neighbors, number = None):
-    pass
+    number = number or len(neighbors) - 1
+    neighbor_distances = distance_all(first_neighbor, neighbors)
+    sorted_neighbors = sorted(neighbor_distances, key=lambda neighbor: neighbor['distance'])
+    return sorted_neighbors[:number]
 ```
 
 
