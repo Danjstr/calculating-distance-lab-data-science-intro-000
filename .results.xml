@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="2" name="pytest" skips="0" tests="7" time="1.911"><testcase classname="future_tests.index_test.TestDistance" file="future_tests/index_test.py" line="10" name="test_avenue_distance" time="0.0007205009460449219"></testcase><testcase classname="future_tests.index_test.TestDistance" file="future_tests/index_test.py" line="16" name="test_distance" time="0.0005376338958740234"></testcase><testcase classname="future_tests.index_test.TestDistance" file="future_tests/index_test.py" line="22" name="test_distance_all" time="0.006134510040283203"><failure message="AssertionError: Lists differ: [{&apos;name&apos;: &apos;Suzie&apos;, &apos;avenue&apos;: 1, &apos;street&apos;: 11[334 chars]661}] != [{&apos;avenue&apos;: 1, &apos;distance&apos;: 4.242640687119285[319 chars]: 4}]
+
+First differing element 0:
+{&apos;name&apos;: &apos;Suzie&apos;, &apos;avenue&apos;: 1, &apos;street&apos;: 11, &apos;distance&apos;: 4.123105625617661}
+{&apos;avenue&apos;: 1, &apos;distance&apos;: 4.242640687119285, &apos;name&apos;: &apos;Suzie&apos;, &apos;street&apos;: 11}
+
+Diff is 1066 characters long. Set self.maxDiff to None to see it.">self = &lt;index_test.TestDistance testMethod=test_distance_all&gt;
+
+    def test_distance_all(self):
+        self.assertEqual(distance_all(fred, neighbors), [{&apos;avenue&apos;: 1, &apos;distance&apos;: 4.242640687119285, &apos;name&apos;: &apos;Suzie&apos;, &apos;street&apos;: 11},
+             {&apos;avenue&apos;: 5, &apos;distance&apos;: 1.0, &apos;name&apos;: &apos;Bob&apos;, &apos;street&apos;: 8},
+             {&apos;avenue&apos;: 6, &apos;distance&apos;: 5.385164807134504, &apos;name&apos;: &apos;Edgar&apos;, &apos;street&apos;: 13},
+             {&apos;avenue&apos;: 3, &apos;distance&apos;: 2.23606797749979, &apos;name&apos;: &apos;Steven&apos;, &apos;street&apos;: 6},
+&gt;            {&apos;avenue&apos;: 5, &apos;distance&apos;: 4.123105625617661, &apos;name&apos;: &apos;Natalie&apos;, &apos;street&apos;: 4}])
+E       AssertionError: Lists differ: [{&apos;name&apos;: &apos;Suzie&apos;, &apos;avenue&apos;: 1, &apos;street&apos;: 11[334 chars]661}] != [{&apos;avenue&apos;: 1, &apos;distance&apos;: 4.242640687119285[319 chars]: 4}]
+E       
+E       First differing element 0:
+E       {&apos;name&apos;: &apos;Suzie&apos;, &apos;avenue&apos;: 1, &apos;street&apos;: 11, &apos;distance&apos;: 4.123105625617661}
+E       {&apos;avenue&apos;: 1, &apos;distance&apos;: 4.242640687119285, &apos;name&apos;: &apos;Suzie&apos;, &apos;street&apos;: 11}
+E       
+E       Diff is 1066 characters long. Set self.maxDiff to None to see it.
+
+future_tests/index_test.py:28: AssertionError</failure></testcase><testcase classname="future_tests.index_test.TestDistance" file="future_tests/index_test.py" line="13" name="test_distance_between_neighbors_squared" time="0.0005710124969482422"></testcase><testcase classname="future_tests.index_test.TestDistance" file="future_tests/index_test.py" line="19" name="test_distance_with_neighbor" time="0.0005285739898681641"></testcase><testcase classname="future_tests.index_test.TestDistance" file="future_tests/index_test.py" line="29" name="test_nearest_neighbors" time="0.0020294189453125"><failure message="AssertionError: Lists differ: [{&apos;name&apos;: &apos;Suzie&apos;, &apos;avenue&apos;: 1, &apos;street&apos;: 11[102 chars]661}] != [{&apos;avenue&apos;: 5, &apos;distance&apos;: 1.0, &apos;name&apos;: &apos;Bob[87 chars]: 6}]
+
+First differing element 0:
+{&apos;name&apos;: &apos;Suzie&apos;, &apos;avenue&apos;: 1, &apos;street&apos;: 11, &apos;distance&apos;: 4.123105625617661}
+{&apos;avenue&apos;: 5, &apos;distance&apos;: 1.0, &apos;name&apos;: &apos;Bob&apos;, &apos;street&apos;: 8}
+
+- [{&apos;avenue&apos;: 1, &apos;distance&apos;: 4.123105625617661, &apos;name&apos;: &apos;Suzie&apos;, &apos;street&apos;: 11},
+-  {&apos;avenue&apos;: 5, &apos;distance&apos;: 4.123105625617661, &apos;name&apos;: &apos;Bob&apos;, &apos;street&apos;: 8}]
+? ^                          ^ ---- ----------                             ^
+
++ [{&apos;avenue&apos;: 5, &apos;distance&apos;: 1.0, &apos;name&apos;: &apos;Bob&apos;, &apos;street&apos;: 8},
+? ^                          ^                               ^
+
++  {&apos;avenue&apos;: 3, &apos;distance&apos;: 2.23606797749979, &apos;name&apos;: &apos;Steven&apos;, &apos;street&apos;: 6}]">self = &lt;index_test.TestDistance testMethod=test_nearest_neighbors&gt;
+
+    def test_nearest_neighbors(self):
+        self.assertEqual(nearest_neighbors(fred, neighbors, 2), [{&apos;avenue&apos;: 5, &apos;distance&apos;: 1.0, &apos;name&apos;: &apos;Bob&apos;, &apos;street&apos;: 8},
+&gt;           {&apos;avenue&apos;: 3, &apos;distance&apos;: 2.23606797749979, &apos;name&apos;: &apos;Steven&apos;, &apos;street&apos;: 6}])
+E       AssertionError: Lists differ: [{&apos;name&apos;: &apos;Suzie&apos;, &apos;avenue&apos;: 1, &apos;street&apos;: 11[102 chars]661}] != [{&apos;avenue&apos;: 5, &apos;distance&apos;: 1.0, &apos;name&apos;: &apos;Bob[87 chars]: 6}]
+E       
+E       First differing element 0:
+E       {&apos;name&apos;: &apos;Suzie&apos;, &apos;avenue&apos;: 1, &apos;street&apos;: 11, &apos;distance&apos;: 4.123105625617661}
+E       {&apos;avenue&apos;: 5, &apos;distance&apos;: 1.0, &apos;name&apos;: &apos;Bob&apos;, &apos;street&apos;: 8}
+E       
+E       - [{&apos;avenue&apos;: 1, &apos;distance&apos;: 4.123105625617661, &apos;name&apos;: &apos;Suzie&apos;, &apos;street&apos;: 11},
+E       -  {&apos;avenue&apos;: 5, &apos;distance&apos;: 4.123105625617661, &apos;name&apos;: &apos;Bob&apos;, &apos;street&apos;: 8}]
+E       ? ^                          ^ ---- ----------                             ^
+E       
+E       + [{&apos;avenue&apos;: 5, &apos;distance&apos;: 1.0, &apos;name&apos;: &apos;Bob&apos;, &apos;street&apos;: 8},
+E       ? ^                          ^                               ^
+E       
+E       +  {&apos;avenue&apos;: 3, &apos;distance&apos;: 2.23606797749979, &apos;name&apos;: &apos;Steven&apos;, &apos;street&apos;: 6}]
+
+future_tests/index_test.py:32: AssertionError</failure></testcase><testcase classname="future_tests.index_test.TestDistance" file="future_tests/index_test.py" line="7" name="test_street_distance" time="0.0007145404815673828"></testcase></testsuite>
