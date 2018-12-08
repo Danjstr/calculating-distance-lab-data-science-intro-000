@@ -1,0 +1,4 @@
+{
+  "future_tests/index_test.py::TestDistance::test_distance_all": true,
+  "future_tests/index_test.py::TestDistance::test_nearest_neighbors": true
+}
